@@ -10,6 +10,7 @@ class Snake:
         self.snakehead = self.squares[0]
 
     def create_segments(self):
+        """Creates snake segments"""
         for i in range(3):
             new_square = Turtle(shape="square")
             new_square.color("white")
