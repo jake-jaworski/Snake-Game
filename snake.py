@@ -1,22 +1,27 @@
 from turtle import Turtle, Screen
-
+POSITION = [(0, 0), (-20, 0), (-40, 0)]
 
 class Snake:
 
     def __init__(self):
-        self.position = [(0, 0), (-20, 0), (-40, 0)]
         self.squares = []
-        self.create_segments()
+        self.create_snake()
         self.snakehead = self.squares[0]
 
-    def create_segments(self):
+    def create_snake(self):
         """Creates snake segments"""
-        for i in range(3):
-            new_square = Turtle(shape="square")
-            new_square.color("white")
-            new_square.penup()
-            new_square.goto(self.position[i])
-            self.squares.append(new_square)
+        for position in POSITION:
+            self.add_square(position)
+
+    def add_square(self, position):
+        new_square = Turtle(shape="square")
+        new_square.color("white")
+        new_square.penup()
+        new_square.goto(position)
+        self.squares.append(new_square)
+
+    def extend_snake(self):
+        self.add_square(self.squares[-1].position())
 
     def move(self):
         for segment in range(len(self.squares) - 1, 0, -1):
