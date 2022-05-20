@@ -30,6 +30,13 @@ class Snake:
             self.squares[segment].goto(new_x, new_y)
         self.snakehead.forward(20)
 
+    def reset_snake(self):
+        for square in self.squares:
+            square.goto(800, 800)
+        self.squares.clear()
+        self.create_snake()
+        self.snakehead = self.squares[0]
+
     def up(self):
         if self.snakehead.heading() != 270:
             self.snakehead.setheading(90)
